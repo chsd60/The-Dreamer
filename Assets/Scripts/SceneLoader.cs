@@ -6,9 +6,32 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
 
     [SerializeField] private int sceneToLoad;
-    void OnTriggerEnter2D(Collider2D other) {
+
+    public GameObject downArrow;
+    private bool activeCheck;
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player") && !activeCheck) {
+            downArrow.SetActive(true);
+            activeCheck = true;
+            Debug.Log("Enter");
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+            if (Input.GetButtonDown("Down")) {
+                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+            }
+        
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Player") && activeCheck) {
+            downArrow.SetActive(false);
+            activeCheck = false;
+            Debug.Log("Exit");
         }
     }
 }
