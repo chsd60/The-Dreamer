@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
@@ -679,6 +680,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Unity projects/SFL/The Dreamer/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:/Unity projects/SFL/The Dreamer/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:/Unity projects/SFL/The Dreamer/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
