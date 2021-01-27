@@ -10,9 +10,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	private bool m_FacingRight = true;
 
 
-	void FixedUpdate() {
-		enemyRigidBody.AddForce(transform.position.x(enemyWalkSpeed));
-    }
+
 
 	private void Flip() {
 		// Switch the way the enemy is labelled as facing.
