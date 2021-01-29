@@ -9,58 +9,30 @@ public class DialogSystem : MonoBehaviour
     public string[] sentences;
     private int index;
     public float typingSpeed;
-    private AudioSource source;
-    private AudioClip[] voices;
+    public AudioSource source;
+    public AudioClip[] voices;
 
     public GameObject continueButton;
 
-    public GameObject downArrow;
-    private bool activeCheck;
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player") && !activeCheck) {
-            downArrow.SetActive(true);
-            activeCheck = true;
-            Debug.Log("Enter");
-        }
+    private void Start() {
+        StartCoroutine(Type());
     }
-
-    void OnTriggerStay2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
-            if (Input.GetButtonDown("Down")) {
-                Type();
-            }
-
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Player") && activeCheck) {
-            downArrow.SetActive(false);
-            activeCheck = false;
-            Debug.Log("Exit");
-        }
-    }
-
     IEnumerator Type() {
 
-        foreach(char letter in sentences[index].ToCharArray()) {
+        continueButton.SetActive(false);
+        AudioClip audio = voices[index];
+        source.clip = audio;
+        source.Play();
+
+        foreach (char letter in sentences[index].ToCharArray()) {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
-
         }
-    }
 
-    private void Update() {
-        if(textDisplay.text == sentences[index]) {
-            continueButton.SetActive(true);
-        }
+        continueButton.SetActive(true);
     }
 
     public void NextSentence() {
-
-        source.Play();
-        continueButton.SetActive(false);
 
         if (index < sentences.Length - 1) {
             index++;
