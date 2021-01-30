@@ -13,9 +13,36 @@ public class DialogSystem : MonoBehaviour
     public AudioClip[] voices;
 
     public GameObject continueButton;
+    public GameObject textBackground;
 
-    private void Start() {
-        StartCoroutine(Type());
+    public bool hasEntered = false;
+    public bool dialogueInProgress = false;
+    public bool typingInProgress = false;
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        hasEntered = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        hasEntered = false;
+        //Finisce forzatamente il dialogo se il personaggio esce dal trigger
+        if (dialogueInProgress == true) {
+            Invoke("EndDialogue", 0f);
+        }
+    }
+    void Update() {
+        if (Input.GetButtonDown("Down") && hasEntered == true && dialogueInProgress == false) {
+            textBackground.SetActive(true);
+            StartCoroutine(Type());
+            dialogueInProgress = true;
+            Debug.Log("DialogoInizio");
+        }
+
+        if (Input.GetButtonDown("Down") && dialogueInProgress == true && typingInProgress == false) {
+            Invoke("NextSentence", 0.1f);
+            Debug.Log("NextSentence");
+        }
+
     }
     IEnumerator Type() {
 
@@ -23,13 +50,16 @@ public class DialogSystem : MonoBehaviour
         AudioClip audio = voices[index];
         source.clip = audio;
         source.Play();
+        typingInProgress = true;
 
         foreach (char letter in sentences[index].ToCharArray()) {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
+            Debug.Log("Scrivo");
         }
 
         continueButton.SetActive(true);
+        typingInProgress = false;
     }
 
     public void NextSentence() {
@@ -39,8 +69,15 @@ public class DialogSystem : MonoBehaviour
             textDisplay.text = "";
             StartCoroutine(Type());
         } else {
-            textDisplay.text = "";
-            continueButton.SetActive(false);
+            Invoke("EndDialogue", 0f);
         }
+    }
+
+    public void EndDialogue() {
+        textDisplay.text = "";
+        continueButton.SetActive(false);
+        textBackground.SetActive(false);
+        dialogueInProgress = false;
+        index = 0;
     }
 }
