@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class DialogSystem : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DialogSystem : MonoBehaviour
     public string[] sentences;
     public AudioClip[] voices;
 
+    public UnityEvent endedDialogueAction;
     public GameObject continueButton;
     public GameObject textBackground;
 
@@ -79,5 +81,6 @@ public class DialogSystem : MonoBehaviour
         textBackground.SetActive(false);
         dialogueInProgress = false;
         index = 0;
+        endedDialogueAction.Invoke();
     }
 }
