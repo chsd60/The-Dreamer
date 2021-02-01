@@ -6,18 +6,18 @@ using TMPro;
 public class DialogSystem : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
-    public string[] sentences;
     private int index;
     public float typingSpeed;
     public AudioSource source;
+    public string[] sentences;
     public AudioClip[] voices;
 
     public GameObject continueButton;
     public GameObject textBackground;
 
-    public bool hasEntered = false;
-    public bool dialogueInProgress = false;
-    public bool typingInProgress = false;
+    [HideInInspector] public bool hasEntered = false;
+    [HideInInspector] public bool dialogueInProgress = false;
+    [HideInInspector] public bool typingInProgress = false;
 
     private void OnTriggerEnter2D(Collider2D other) {
         hasEntered = true;
