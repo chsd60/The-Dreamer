@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour {
     public GameObject papaGQuest1Obj;
     public GameObject papaGQuest1Obj2;
     public GameObject papaGQuest1SceneL;
+
     public GameObject dreamcatcherObj;
+    public GameObject dreamcatcherDial1;
 
     void Update() {
         if (activePapaGQuest1 == false) {
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour {
             dreamcatcherObj.SetActive(true);
         } else {
             dreamcatcherObj.SetActive(false);
+            dreamcatcherDial1.SetActive(true);
         }
     }
 
