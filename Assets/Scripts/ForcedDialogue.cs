@@ -5,7 +5,9 @@ using UnityEngine;
 public class ForcedDialogue : MonoBehaviour {
     public bool cutsceneHasHappened = false;
     public bool hasEntered = false;
+    public bool hasEnded = false;
     public GameObject dialogue;
+    public GameObject dialogueTrigger;
     private CharacterController2D characterController2D;
     private PlayerMovement playerMovement;
 
@@ -13,6 +15,7 @@ public class ForcedDialogue : MonoBehaviour {
         hasEntered = true;
         playerMovement = other.gameObject.GetComponent<PlayerMovement>();
         characterController2D = other.gameObject.GetComponent<CharacterController2D>();
+
     }
 
     private void OnTriggerExit2D(Collider2D other) {
@@ -30,5 +33,13 @@ public class ForcedDialogue : MonoBehaviour {
             characterController2D.enabled = false;
             playerMovement.enabled = false;
         }
+
+        if (hasEnded == true) {
+            dialogueTrigger.SetActive(false);
+        }
+    }
+
+    public void DialogEnding() {
+        hasEnded = true;
     }
 }
