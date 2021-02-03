@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public bool activePapaGQuest1 = false;
-    public GameObject PapaGQuest1Obj;
-    public GameObject PapaGQuest1Obj2;
-    public GameObject PapaGQuest1SL;
-    void Start() {
-        
-    }
+    public bool dreamcatcher = true;
+    public GameObject papaGQuest1Obj;
+    public GameObject papaGQuest1Obj2;
+    public GameObject papaGQuest1SceneL;
+    public GameObject dreamcatcherObj;
 
     void Update() {
         if (activePapaGQuest1 == false) {
-            PapaGQuest1Obj.SetActive(true);
-            PapaGQuest1SL.SetActive(false);
-            PapaGQuest1Obj2.SetActive(false);
+            papaGQuest1Obj.SetActive(true);
+            papaGQuest1SceneL.SetActive(false);
+            papaGQuest1Obj2.SetActive(false);
 
         } else {
-            PapaGQuest1Obj.SetActive(false);
-            PapaGQuest1SL.SetActive(true);
-            PapaGQuest1Obj2.SetActive(true);
+            papaGQuest1Obj.SetActive(false);
+            papaGQuest1SceneL.SetActive(true);
+            papaGQuest1Obj2.SetActive(true);
+        }
+
+        if (dreamcatcher == true) {
+            dreamcatcherObj.SetActive(true);
+        } else {
+            dreamcatcherObj.SetActive(false);
         }
     }
 
