@@ -36,4 +36,8 @@ public class GameManager : MonoBehaviour {
         activePapaGQuest1 = true;
     }
 
+    public void Dreamcatcher() {
+        dreamcatcher = false;
+    }
+
 }

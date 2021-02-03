@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 62770540}
   - component: {fileID: 62770542}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Dialogue 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 246047357}
   - component: {fileID: 246047356}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,7 +776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.23, y: 0.39, z: -10}
+  m_LocalPosition: {x: -2.21, y: 0.42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1894823555}
@@ -792,16 +792,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590197724}
-  - component: {fileID: 590197727}
   - component: {fileID: 590197726}
   - component: {fileID: 590197725}
+  - component: {fileID: 590197727}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ForcedDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &590197724
 Transform:
   m_ObjectHideFlags: 0
@@ -829,15 +829,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1268758926}
-  typingSpeed: 0
-  source: {fileID: 0}
+  typingSpeed: 0.01
+  source: {fileID: 1894823554}
   sentences:
-  - yo
+  - Hohoho
+  - uhuhu
+  - uh
   voices:
   - {fileID: 8300000, guid: a9b5ccb590136574180f0b79c36aa346, type: 3}
+  - {fileID: 8300000, guid: 8f1eeb1688a74db4e8dd7653e2d238b9, type: 3}
+  - {fileID: 8300000, guid: 44fc42bd6ade84d42a6b07c40d0af51a, type: 3}
   endedDialogueAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 590197726}
+        m_MethodName: DialogEnding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   continueButton: {fileID: 697880834}
   textBackground: {fileID: 246047354}
   hasEntered: 0
@@ -858,8 +873,6 @@ MonoBehaviour:
   cutsceneHasHappened: 0
   hasEntered: 0
   hasEnded: 0
-  dialogue: {fileID: 590197723}
-  dialogueTrigger: {fileID: 0}
 --- !u!61 &590197727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -873,7 +886,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.47283733, y: -2.3646832}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -884,7 +897,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.9631302, y: 5.7293663}
   m_EdgeRadius: 0
 --- !u!1 &615170555
 GameObject:
@@ -921,7 +934,7 @@ MonoBehaviour:
   papaGQuest1Obj2: {fileID: 62770539}
   papaGQuest1SceneL: {fileID: 309578642}
   dreamcatcherObj: {fileID: 914244379}
-  dreamcatcherDial1: {fileID: 0}
+  dreamcatcherDial1: {fileID: 590197723}
 --- !u!4 &615170557
 Transform:
   m_ObjectHideFlags: 0
@@ -954,7 +967,7 @@ GameObject:
   - component: {fileID: 697880837}
   - component: {fileID: 697880836}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Freccia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1061,12 +1074,12 @@ MonoBehaviour:
   endedDialogueAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 9a1fa9cafb2708d4484390511915b2b1, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 785453277}
+        m_MethodName: DialogEnding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1131,9 +1144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutsceneHasHappened: 0
   hasEntered: 0
-  hasEnded: 1
-  dialogue: {fileID: 0}
-  dialogueTrigger: {fileID: 0}
+  hasEnded: 0
 --- !u!1 &807530855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1176,7 @@ Transform:
   - {fileID: 427874247}
   - {fileID: 2019709568}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &827953070
 PrefabInstance:
@@ -1539,6 +1550,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1052200792}
+  - component: {fileID: 1052200793}
+  - component: {fileID: 1052200794}
   m_Layer: 0
   m_Name: ForcDialTest2
   m_TagString: Untagged
@@ -1562,6 +1575,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052200793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052200791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5497a20d16d6849a4b67dc700ea112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 615170556}
+        m_MethodName: Dreamcatcher
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  exitAction:
+    m_PersistentCalls:
+      m_Calls: []
+  stayAction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!61 &1052200794
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052200791}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.32751244, y: -2.4158907}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.193229, y: 5.8317814}
+  m_EdgeRadius: 0
 --- !u!4 &1208739036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2161474505985023298, guid: 4b49e3192340fb048a8e257b616f4940,
@@ -2225,7 +2296,7 @@ GameObject:
   - component: {fileID: 1748231711}
   - component: {fileID: 1748231713}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Dialogue 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2328,7 @@ MonoBehaviour:
   endedDialogueAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 615170556}
         m_MethodName: PapaGQuest1
         m_Mode: 1
         m_Arguments:
@@ -2266,7 +2337,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   continueButton: {fileID: 697880834}
   textBackground: {fileID: 246047354}
@@ -2407,7 +2478,7 @@ RectTransform:
   - {fileID: 1268758925}
   - {fileID: 697880835}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2492,7 +2563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894091589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.23, y: 0.39, z: -10}
+  m_LocalPosition: {x: -2.21, y: 0.42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 121110593}
@@ -3059,7 +3130,7 @@ Transform:
   - {fileID: 1748231712}
   - {fileID: 62770541}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3861795682809284860
 GameObject:
@@ -3352,12 +3423,12 @@ PrefabInstance:
     - target: {fileID: 8538997528813774770, guid: 83fc5bb1954354f43a04bab560ad76ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.23
+      value: -2.21
       objectReference: {fileID: 0}
     - target: {fileID: 8538997528813774770, guid: 83fc5bb1954354f43a04bab560ad76ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 8538997528813774770, guid: 83fc5bb1954354f43a04bab560ad76ab,
         type: 3}

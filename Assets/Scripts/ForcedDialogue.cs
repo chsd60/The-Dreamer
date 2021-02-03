@@ -6,16 +6,12 @@ public class ForcedDialogue : MonoBehaviour {
     public bool cutsceneHasHappened = false;
     public bool hasEntered = false;
     public bool hasEnded = false;
-    public GameObject dialogue;
-    public GameObject dialogueTrigger;
-    private CharacterController2D characterController2D;
-    private PlayerMovement playerMovement;
+    private GameObject playerGameObject;
+  
 
     private void OnTriggerEnter2D(Collider2D other) {
         hasEntered = true;
-        playerMovement = other.gameObject.GetComponent<PlayerMovement>();
-        characterController2D = other.gameObject.GetComponent<CharacterController2D>();
-
+        playerGameObject = other.gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D other) {
@@ -25,21 +21,17 @@ public class ForcedDialogue : MonoBehaviour {
         if (cutsceneHasHappened == false && hasEntered == true) {
             GetComponent<DialogSystem>().StartCoroutine("StartDialogue");
             Debug.Log("Entrato");
+            playerGameObject.GetComponent<CharacterController2D>().enabled = false;
+            playerGameObject.GetComponent<PlayerMovement>().enabled = false;
+            playerGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             cutsceneHasHappened = true;
-        }
-
-        if (hasEntered == true) {
-            playerMovement.horizontalMove = 0f;
-            characterController2D.enabled = false;
-            playerMovement.enabled = false;
-        }
-
-        if (hasEnded == true) {
-            dialogueTrigger.SetActive(false);
-        }
+        }       
     }
 
     public void DialogEnding() {
+        playerGameObject.GetComponent<CharacterController2D>().enabled = true;
+        playerGameObject.GetComponent<PlayerMovement>().enabled = true;
+        this.gameObject.SetActive(false);
         hasEnded = true;
     }
 }
