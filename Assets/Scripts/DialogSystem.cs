@@ -29,25 +29,23 @@ public class DialogSystem : MonoBehaviour
         hasEntered = false;
         //Finisce forzatamente il dialogo se il personaggio esce dal trigger
         if (dialogueInProgress == true) {
-            Invoke("EndDialogue", 0f);
+            Invoke(nameof(EndDialogue), 0f);
         }
     }
     void Update() {
         if (Input.GetButtonDown("Down") && hasEntered == true && dialogueInProgress == false) {
-            textBackground.SetActive(true);
-            StartCoroutine(Type());
-            dialogueInProgress = true;
+            StartDialogue();
             Debug.Log("DialogoInizio");
         }
 
         if (Input.GetButtonDown("Down") && dialogueInProgress == true && typingInProgress == false) {
-            Invoke("NextSentence", 0.1f);
+            Invoke(nameof(NextSentence), 0.1f);
             Debug.Log("NextSentence");
         }
 
     }
     IEnumerator Type() {
-
+        textBackground.SetActive(true);
         continueButton.SetActive(false);
         AudioClip audio = voices[index];
         source.clip = audio;
@@ -71,7 +69,7 @@ public class DialogSystem : MonoBehaviour
             textDisplay.text = "";
             StartCoroutine(Type());
         } else {
-            Invoke("EndDialogue", 0f);
+            Invoke(nameof(EndDialogue), 0f);
         }
     }
 
@@ -82,5 +80,10 @@ public class DialogSystem : MonoBehaviour
         dialogueInProgress = false;
         index = 0;
         endedDialogueAction.Invoke();
+    }
+
+    public void StartDialogue() {
+        StartCoroutine(Type());
+        dialogueInProgress = true;
     }
 }
